@@ -41,7 +41,7 @@ public class LoginAct {
 
 	public static final String LOGIN_INPUT = "/WEB-INF/t/jeecore/login.html";
 	public static final String LOGIN_SUCCESS = "/WEB-INF/t/jeecore/login_success.html";
-
+	
 	/**
 	 * 统一登录入口
 	 * 
@@ -68,6 +68,11 @@ public class LoginAct {
 		String returnUrl = RequestUtils.getQueryParam(request, RETURN_URL);
 		String message = RequestUtils.getQueryParam(request, MESSAGE);
 		String authId = (String) session.getAttribute(request, AUTH_KEY);
+		
+		
+		//todo: for 演示
+		//return "redirect:login.jspx";
+		
 		if (authId != null) {
 			// 存在认证ID
 			Authentication auth = authMng.retrieve(authId);
@@ -98,6 +103,9 @@ public class LoginAct {
 	public String submit(String username, String password, String processUrl,
 			String returnUrl, String message, HttpServletRequest request,
 			HttpServletResponse response, ModelMap model) {
+		
+		//return "redirect:login.jspx";
+		
 		WebErrors errors = validateSubmit(username, password, request);
 		if (!errors.hasErrors()) {
 			try {
@@ -105,6 +113,11 @@ public class LoginAct {
 						RequestUtils.getIpAddr(request), request, response,
 						session);
 				String view = getView(processUrl, returnUrl, auth.getId());
+				
+				//todo: for 演示
+				//return "redirect:login.jspx";
+				
+				
 				if (view != null) {
 					return view;
 				} else {
@@ -127,6 +140,7 @@ public class LoginAct {
 		if (!StringUtils.isBlank(message)) {
 			model.addAttribute(MESSAGE, message);
 		}
+		//todo:为什么这里的断点没执行到？
 		return LOGIN_INPUT;
 
 	}

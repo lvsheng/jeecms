@@ -98,8 +98,11 @@ public class CasLoginAct {
 				removeCookieErrorRemaining(request, response);
 				FrontUtils.frontData(request, model, site);
 				if(user!=null){
-					return FrontUtils.getTplPath(request, site.getSolutionPath(),
-							TPLDIR_INDEX, TPL_INDEX);
+					//todo: for 演示
+					return "redirect:/";
+					
+					//return FrontUtils.getTplPath(request, site.getSolutionPath(),
+						//	TPLDIR_INDEX, TPL_INDEX);
 				}else{
 					return "redirect:login.jspx";
 				}

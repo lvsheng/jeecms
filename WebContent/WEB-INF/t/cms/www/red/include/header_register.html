@@ -1,4 +1,4 @@
-[#-- 链接登录
+[#--
 [#if user??]
 <div>欢迎您: ${user.username} &nbsp; ${user.group.name} &nbsp; <a href="logout.jspx?returnUrl=/">退出登录</a></div>
 [#else]
@@ -8,7 +8,6 @@
 </div>
 [/#if]
 --]
-[#-- 本页登录
 [#if user??]
 <div>欢迎您: ${user.username} &nbsp; ${user.group.name} &nbsp; <a href="logout.jspx?returnUrl=/">退出登录</a></div>
 [#else]
@@ -25,11 +24,12 @@ $(function() {
 <a href="${base}/register.jspx">会员注册</a>
 </form>
 [/#if]
- --]
 [#--客户端包含登录，用于静态化--]
+[#--
 <div id="loginCsiDiv"></div>
 <script type="text/javascript">
 $(function(){
 	Cms.loginCsi("${base}","loginCsiDiv",{"returnUrl":"${location}"});
 });
 </script>
+--]

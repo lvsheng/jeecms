@@ -52,8 +52,16 @@ public class DynamicPageAct {
 	public String index(HttpServletRequest request, ModelMap model) {
 		CmsSite site = CmsUtils.getSite(request);
 		FrontUtils.frontData(request, model, site);
-		return FrontUtils.getTplPath(request, site.getSolutionPath(),
+		
+		String solutionPath = site.getSolutionPath();
+		
+		String tmlPath = FrontUtils.getTplPath(request, solutionPath,
 				TPLDIR_INDEX, TPL_INDEX);
+		
+		//todo: 为了演示，这里把首页就改为自己写的空首页先
+		tmlPath = "/WEB-INF/t/cms/www/red/index/empty_首页.html";
+		
+		return tmlPath;
 	}
 
 	/**
@@ -121,7 +129,10 @@ public class DynamicPageAct {
 		model.addAttribute("channel", channel);
 		FrontUtils.frontData(request, model, site);
 		FrontUtils.frontPageData(request, model);
-		return channel.getTplChannelOrDef();
+		
+		String chanelTplPath = channel.getTplChannelOrDef();
+		
+		return chanelTplPath;
 	}
 
 	public String content(Integer id, int pageNo, String[] params,

@@ -1,0 +1,11 @@
+<html>
+	<body>
+	<h2>这里是新闻栏目的内容</h2>
+	数据：<br/>
+	 [@cms_content_list count='10' orderBy='4' titLen='30' channelId='13'  channelOption='1' dateFormat='yyyy-MM-dd']
+	     [#list tag_list as a]
+	       ${a.title}-${a.url}<br/>
+	     [/#list]
+     [/@cms_content_list]
+	</body>
+</html>
